@@ -1,3 +1,5 @@
+const posts = require("../data/posts")
+
 const index = (req, res) => {
   res.send("Elenco dei post")
 }
