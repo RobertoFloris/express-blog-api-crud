@@ -1,11 +1,19 @@
 const posts = require("../data/posts")
 
 const index = (req, res) => {
-  res.send("Elenco dei post")
+  res.json(posts)
 }
 
 const show = (req, res) => {
-  res.send("Visualizzo il post con id " + req.params.id)
+  const post = posts.find(post => post.id == req.params.id)
+  if(!post){
+    res.status(404)
+    return res.json({
+      message: "Post non trovato",
+      error: "Not Found"
+    })
+  }
+  res.json(post)
 }
 
 const store = (req, res) => {
@@ -21,7 +29,19 @@ const modify = (req, res) => {
 }
 
 const destroy = (req, res) => {
-  res.send("Elimino il post con id " + req.params.id)
+  const post = posts.find(post => post.id == req.params.id)
+  if(!post){
+    res.status(404)
+    return res.json({
+      message: "Post non trovato",
+      error: "Not Found"
+    })
+  }
+
+  posts.splice(posts.indexOf(post), 1);
+  console.log(posts);
+  
+  res.sendStatus(204);
 }
 
 module.exports = {
