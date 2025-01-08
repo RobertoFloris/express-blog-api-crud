@@ -43,6 +43,7 @@ const store = (req, res) => {
 
   posts.push(newPost)
   
+  res.status(201)
   res.json(posts)
 }
 
