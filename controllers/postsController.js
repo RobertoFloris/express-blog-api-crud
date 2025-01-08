@@ -33,8 +33,17 @@ const show = (req, res) => {
 
 const store = (req, res) => {
   console.log(req.body);
+
+  const id = posts.at(-1).id +1;
+
+  const newPost = {
+    id,
+    ...req.body
+  }
+
+  posts.push(newPost)
   
-  res.send("Aggiungo un nuovo post")
+  res.json(posts)
 }
 
 const update = (req, res) => {
