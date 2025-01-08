@@ -1,15 +1,22 @@
 const posts = require("../data/posts")
 
 const index = (req, res) => {
-  console.log(req.query);
+  console.log(req.query.tags);
   
-  const postIncludesTags = posts.filter(post => post.tags.includes(req.query.tags));
+  // const postIncludesTags = posts.filter(post => post.tags.includes(req.query.tags));
 
-  if(req.query.tags == undefined){
-    res.json(posts);
-  } else {
-    res.json(postIncludesTags);
+  // if(req.query.tags == undefined){
+  //   res.json(posts);
+  // } else {
+  //   res.json(postIncludesTags);
+  // }
+
+  //fix bonus in class
+  let filteredPost = posts;
+  if(req.query.tags){
+    filteredPost = posts.filter(post => post.tags.includes(req.query.tags));
   }
+  res.json(filteredPost);
 }
 
 const show = (req, res) => {
