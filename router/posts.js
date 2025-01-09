@@ -1,5 +1,6 @@
 const express = require("express");
-const postsController = require("../controllers/postsController")
+const postsController = require("../controllers/postsController");
+const checkDataValidity = require("../middlewares/checkDataValidity");
 
 const router = express.Router();
 
@@ -10,13 +11,13 @@ router.get("/", postsController.index);
 router.get("/:id", postsController.show);
 
 //store
-router.post("/", postsController.store);
+router.post("/", checkDataValidity, postsController.store);
 
 //update
-router.put("/:id", postsController.update);
+router.put("/:id", checkDataValidity, postsController.update);
 
 //modify
-router.patch("/:id", postsController.modify);
+router.patch("/:id", checkDataValidity, postsController.modify);
 
 //destroy
 router.delete("/:id", postsController.destroy);

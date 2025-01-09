@@ -1,7 +1,7 @@
 const posts = require("../data/posts")
 
 const index = (req, res) => {
-  console.log(req.query.tags);
+  // console.log(req.query.tags);
   
   //miaFunzioneInesistente(); //test error 500
 
