@@ -3,6 +3,8 @@ const posts = require("../data/posts")
 const index = (req, res) => {
   console.log(req.query.tags);
   
+  //miaFunzioneInesistente(); //test error 500
+
   // const postIncludesTags = posts.filter(post => post.tags.includes(req.query.tags));
 
   // if(req.query.tags == undefined){
