@@ -2,9 +2,14 @@ const express = require("express");
 const postsRouter = require("./router/posts");
 const errorsHandler = require("./middlewares/errorsHandler");
 const notFound = require("./middlewares/notFound");
+const cors = require("cors")
 
 const app = express();
 const port = 3000;
+
+app.use(cors({
+  origin: "http://localhost:5173"
+}))
 
 app.use(express.json())
 
